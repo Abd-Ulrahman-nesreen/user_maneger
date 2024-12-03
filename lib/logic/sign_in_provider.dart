@@ -1,6 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:user_maneger/logic/extensions.dart';
+
+import '../screens/user_maneger.dart';
 
 class SignInProvide extends ChangeNotifier {
   TextEditingController emailController = TextEditingController();
@@ -13,10 +16,11 @@ class SignInProvide extends ChangeNotifier {
     notifyListeners();
     if (formKey.currentState != null && formKey.currentState!.validate()){
       String email = emailController.text;
-      String password = emailController.text;
+      String password = passwordController.text;
       try {
         await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
         if (FirebaseAuth.instance.currentUser != null && context.mounted){
+          context.goAndRemoveAll(const UserManeger());
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Signed in to your account")));}
       }on FirebaseAuthException catch (e){
         if (context.mounted){
