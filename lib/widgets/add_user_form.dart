@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:user_maneger/logic/user_provider.dart';
 
 class AddUserForm extends StatelessWidget {
-  const AddUserForm({super.key});
+  final UserProvider model;
+  const AddUserForm({super.key, required this.model});
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +20,7 @@ class AddUserForm extends StatelessWidget {
           SizedBox(
             width: 300,
             child: TextFormField(
+              controller: model.name,
               decoration:
               inputDecoration.copyWith(hintText: "enter name"),
             ),
@@ -25,12 +28,15 @@ class AddUserForm extends StatelessWidget {
           SizedBox(
             width: 300,
             child: TextFormField(
+              controller: model.age,
               decoration:
               inputDecoration.copyWith(hintText: "enter age"),
             ),
           ),
           MaterialButton(
-            onPressed: () {},
+            onPressed: () {
+              model.addData();
+            },
             child: const Text("Send New User"),
           )
         ],

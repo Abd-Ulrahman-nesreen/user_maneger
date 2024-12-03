@@ -7,6 +7,7 @@ import 'package:user_maneger/screens/sign_in_page.dart';
 import 'package:user_maneger/screens/user_maneger.dart';
 import 'firebase_options.dart';
 import 'logic/sign_in_provider.dart';
+import 'logic/user_provider.dart';
 
 void main () async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,6 +18,7 @@ void main () async{
     ChangeNotifierProvider(create: (_) => SigningInStateProvider()..listen()),
     ChangeNotifierProvider(create: (_) => SignInProvide()),
     ChangeNotifierProvider(create: (_) => SignUpProvider()),
+    ChangeNotifierProvider(create: (_) => UserProvider()..startGitData()),
   ] , child: const MyApp(),));
 }
 
