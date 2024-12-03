@@ -25,6 +25,9 @@ class AddUserForm extends StatelessWidget {
               inputDecoration.copyWith(hintText: "enter name"),
             ),
           ),
+          const SizedBox(
+            height: 10,
+          ),
           SizedBox(
             width: 300,
             child: TextFormField(

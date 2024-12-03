@@ -31,6 +31,8 @@ class UserProvider extends ChangeNotifier {
         "name" : userName,
         "age" : userAge
       });
+      name.clear();
+      age.clear();
     }
   }
 }
